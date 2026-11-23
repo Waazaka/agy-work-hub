@@ -1,0 +1,12 @@
+{
+  "name": "work-hub",
+  "displayName": "Work Hub 多项目总控台",
+  "version": "1.0.0",
+  "description": "纯本地人机协作多项目总控插件：上下文防火墙 + 外置记忆卡 + G0～G3 可自由配置模型变速箱（models.json）+ PreToolUse 硬护栏 + 独立五层对抗盲测。",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "查看全局看板 DASHBOARD.md，汇报各项目当前进度与待处理事项",
+    "在当前工作区接入一个新项目（或按 G1/G2 流程给 example-app 派发一个新需求）",
+    "查看当前 G0～G3 模型配置（models.json），或切换为 economy / max-quality / inherit-all 预设"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "hub-collaboration-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "edit_file|write_file|run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ./scripts/hub_guard.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "_comment": "Single source of truth for G0-G3 model routing. Use 'inherit' to reuse the active session model, or run scripts/configure_models.py to switch presets or customize any role.",
+  "preset": "balanced",
+  "min_swarm_model": "gemini-4-hydrogen-medium",
+  "blocked_models": [
+    "gemini-3.8-*",
+    "flash",
+    "flash_lite"
+  ],
+  "roles": {
+    "coordinator": "gemini-4-argon-medium",
+    "planner": "gemini-4-carbon-high",
+    "impl_g1": "gemini-4-hydrogen-high",
+    "impl_g2_g3": "gemini-4-hydrogen-xhigh",
+    "verifier_g1": "gemini-4-hydrogen-medium",
+    "verifier_g2_g3": "gemini-4-hydrogen-xhigh",
+    "monitor": "gemini-4-hydrogen-medium",
+    "research": "inherit"
+  },
+  "presets": {
+    "balanced": {
+      "description": "Default balanced routing: Argon Medium coordinator, Carbon High planner, Hydrogen High/XHigh coding & verification.",
+      "roles": {
+        "coordinator": "gemini-4-argon-medium",
+        "planner": "gemini-4-carbon-high",
+        "impl_g1": "gemini-4-hydrogen-high",
+        "impl_g2_g3": "gemini-4-hydrogen-xhigh",
+        "verifier_g1": "gemini-4-hydrogen-medium",
+        "verifier_g2_g3": "gemini-4-hydrogen-xhigh",
+        "monitor": "gemini-4-hydrogen-medium",
+        "research": "inherit"
+      }
+    },
+    "economy": {
+      "description": "Quota-saving routing: inherit coordinator/research and use medium/high Hydrogen for Swarm.",
+      "roles": {
+        "coordinator": "inherit",
+        "planner": "gemini-4-hydrogen-high",
+        "impl_g1": "gemini-4-hydrogen-medium",
+        "impl_g2_g3": "gemini-4-hydrogen-high",
+        "verifier_g1": "gemini-4-hydrogen-medium",
+        "verifier_g2_g3": "gemini-4-hydrogen-medium",
+        "monitor": "gemini-4-hydrogen-medium",
+        "research": "inherit"
+      }
+    },
+    "max-quality": {
+      "description": "Maximum-capability routing for complex architecture, deep debugging, and full XHigh delivery.",
+      "roles": {
+        "coordinator": "gemini-4-argon-high",
+        "planner": "gemini-4-carbon-high",
+        "impl_g1": "gemini-4-hydrogen-xhigh",
+        "impl_g2_g3": "gemini-4-hydrogen-xhigh",
+        "verifier_g1": "gemini-4-hydrogen-high",
+        "verifier_g2_g3": "gemini-4-hydrogen-xhigh",
+        "monitor": "gemini-4-hydrogen-medium",
+        "research": "inherit"
+      }
+    },
+    "inherit-all": {
+      "description": "Provider-agnostic routing: every role inherits the user's current session model.",
+      "roles": {
+        "coordinator": "inherit",
+        "planner": "inherit",
+        "impl_g1": "inherit",
+        "impl_g2_g3": "inherit",
+        "verifier_g1": "inherit",
+        "verifier_g2_g3": "inherit",
+        "monitor": "inherit",
+        "research": "inherit"
+      }
+    }
+  }
+}
